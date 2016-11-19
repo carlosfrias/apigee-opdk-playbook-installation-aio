@@ -20,7 +20,7 @@
   vars:
     hosts: planet
   tags:
-  - os
+  - os-pre-req
 
 - include: configuration/update-user.yml
   vars:
@@ -29,12 +29,19 @@
   tags:
   - user
 
+- include: components/opdk-pre-requisites.yml
+  vars:
+    hosts: 'planet'
+    jdk_version: '1.8'
+  tags:
+  - apigee-pre-req
+
 - include: components/opdk-install-component.yml
   vars:
     hosts: planet
     component_profile: 'aio'
   tags:
-  - aio
+  - apigee-component
 
 - include: configuration/opdk-setup-org-config.yml
   vars:
