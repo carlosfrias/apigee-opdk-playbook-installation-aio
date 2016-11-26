@@ -1,6 +1,8 @@
 ---
 - hosts: '{{ hosts }}'
   serial: 1
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-component-installer
   - { role: apigee-opdk-setup-component, profile: '{{ component_profile }}' }

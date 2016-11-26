@@ -1,5 +1,7 @@
 ---
 - hosts: planet
+  vars_files:
+  - ~/.apigee/credentials.yml
 
   pre_tasks:
   - setup:

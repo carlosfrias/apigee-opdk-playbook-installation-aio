@@ -22,6 +22,8 @@
 
 - hosts: '{{ hosts }}'
   strategy: free
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-openjdk
   tags:

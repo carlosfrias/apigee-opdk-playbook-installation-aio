@@ -1,6 +1,8 @@
 ---
 - hosts: rmp
   serial: 1
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-default-settings
   tasks:
@@ -24,6 +26,8 @@
 
 - hosts: pg
   serial: 1
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-default-settings
   tasks:
@@ -39,6 +43,8 @@
 
 - hosts: qpid
   serial: 1
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-default-settings
   tasks:
@@ -54,6 +60,8 @@
 
 - hosts: ms
   serial: 1
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-default-settings
   tasks:

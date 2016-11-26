@@ -1,6 +1,8 @@
 ---
 - hosts: planet
   strategy: free
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-default-settings
   - { role: apigee-fetch-files, fetch_files: '{{ apigee_log_files }}' }
@@ -11,6 +13,8 @@
 - hosts: planet
   become: true
   strategy: free
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-default-settings
   - { role: apigee-fetch-files, fetch_files: '{{ system_config_files }}' }
@@ -20,6 +24,8 @@
 
 - hosts: planet
   strategy: free
+  vars_files:
+  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-default-settings
   - { role: apigee-fetch-files, fetch_files: '{{ apigee_config_files }}' }
