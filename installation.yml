@@ -1,33 +1,22 @@
 ---
-- include: configuration/update_cache.yml
-
-- include: configuration/load-opdk-credentials.yml
-  vars:
-    hosts: planet
+- name: Update the ansible cache
+  include: configuration/update_cache.yml
   tags:
-  - credentials
-
-- hosts: planet
-  tasks:
-  - name: Update cache with basic node info
-    setup:
-
-  - name: Update cache with AWS info, if running on aws
-    ec2_facts:
-    when: ansible_bios_version is defined and ansible_bios_version | lower | search('amazon')
+  - cache
 
 - include: configuration/opdk-setup-os.yml
   vars:
-    hosts: planet
+    hosts: 'planet'
   tags:
+  - os
   - os-pre-req
 
 - include: configuration/update-user.yml
   vars:
-    hosts: planet
+    hosts: 'planet'
     user: 'root'
   tags:
-  - user
+  - root-user
 
 - include: components/opdk-pre-requisites.yml
   vars:
@@ -43,12 +32,6 @@
   tags:
   - apigee-component
 
-- include: configuration/opdk-setup-org-config.yml
-  vars:
-    hosts: planet
-  tags:
-  - org-config
-
 - include: configuration/opdk-setup-org.yml
   vars:
     hosts: planet
@@ -56,9 +39,13 @@
   - org
 
 - include: validations/opdk-setup-validate.yml
+  vars:
+    hosts: 'dc-1-rmp'
   tags:
   - validation
 
 - include: validations/opdk-setup-log-files.yml
+  vars:
+    hosts: planet
   tags:
   - logs

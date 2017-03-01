@@ -1,8 +1,8 @@
 ---
 - hosts: '{{ hosts }}'
-  vars_files:
-  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-status
   tags:
   - status
+
+- include: opdk-server-self.yml

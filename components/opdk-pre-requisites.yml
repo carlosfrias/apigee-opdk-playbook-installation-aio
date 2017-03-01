@@ -4,7 +4,6 @@
   vars_files:
   - ~/.apigee/credentials.yml
   roles:
-  - apigee-opdk-setup-default-settings
   - apigee-opdk-setup-apigee-user
   tags:
   - apigee-user
@@ -22,8 +21,6 @@
 
 - hosts: '{{ hosts }}'
   strategy: free
-  vars_files:
-  - ~/.apigee/credentials.yml
   roles:
   - apigee-opdk-setup-openjdk
   tags:
@@ -35,7 +32,6 @@
   vars_files:
   - ~/.apigee/credentials.yml
   roles:
-  - apigee-opdk-setup-default-settings
   - apigee-opdk-setup-bootstrap
   tags:
   - apigee-pre-req

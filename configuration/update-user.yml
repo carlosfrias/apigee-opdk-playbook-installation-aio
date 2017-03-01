@@ -1,17 +1,19 @@
 ---
 - hosts: '{{ hosts }}'
   become: yes
-#  gather_facts: no
 
   vars:
     pubkey: '~/.ssh/id_rsa.pub'
 
-  tasks:
-  - name: Build EC2 facts cache
-    ec2_facts:
+  vars_files:
+  - ~/.apigee/credentials.yml
 
+  tasks:
   - name: Build setup facts cache
     setup:
+
+  - name: Build EC2 facts cache
+    ec2_facts:
 
   - name: Copy local public keys to server for user {{ user }}
     authorized_key:
@@ -28,6 +30,7 @@
       backrefs: yes
     notify:
     - Restart SSH service
+    when: user == 'root'
 
   handlers:
   - name: Restart SSH service
