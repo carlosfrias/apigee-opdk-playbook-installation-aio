@@ -8,7 +8,6 @@
   vars:
     hosts: 'planet'
   tags:
-  - os
   - os-pre-req
 
 - include: configuration/update-user.yml
