@@ -50,3 +50,7 @@
 - src: https://github.com/carlosfrias/apigee-opdk-setup-status
 
 - src: https://github.com/carlosfrias/apigee-opdk-setup-bootstrap-rollback
+
+- src: https://github.com/carlosfrias/apigee-opdk-modules.git
+
+- src: https://github.com/carlosfrias/apigee-opdk-cache-update.git
