@@ -1,18 +1,18 @@
 ---
-- hosts: rmp
-  serial: 1
+- hosts: '{{ hosts }}'
   vars_files:
   - ~/.apigee/credentials.yml
+  serial: 1
   roles:
-  - apigee-opdk-setup-default-settings
+  - { role: apigee-opdk-server-self, server_types: ['mp'] }
   - apigee-opdk-setup-validate
   tags:
   - validate
 
-- hosts: rmp
-  serial: 1
+- hosts: '{{ hosts }}'
   vars_files:
   - ~/.apigee/credentials.yml
+  serial: 1
   roles:
   - apigee-opdk-setup-validate-cleanup
   tags:
